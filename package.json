@@ -3,12 +3,17 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
+=======
+    "test": "echo \"Error: no test specified\" && exit 1"
+>>>>>>> 0148099448ddbdcd721a58b6fc0ca32e129d56cc
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+<<<<<<< HEAD
   "description": "RootTerminal Proxy Server",
   "repository": {
     "type": "git",
@@ -25,4 +30,7 @@
     "express-rate-limit": "^7.5.0",
     "openai": "^4.82.0"
   }
+=======
+  "description": ""
+>>>>>>> 0148099448ddbdcd721a58b6fc0ca32e129d56cc
 }
