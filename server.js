@@ -16,14 +16,14 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Secure API key using environment variables
-const klusterApiKey = process.env.KLUSTER_API_KEY || "f6c424d3-5b31-4e2d-80b1-28b8a6fe8d71"; // Replace with your API key
+const klusterApiKey = process.env.KLUSTER_API_KEY || "f6c424d3-5b31-4e2d-80b1-28b8a6fe8d71";
 const client = new OpenAI({
     apiKey: klusterApiKey,
     baseURL: "https://api.kluster.ai/v1",
 });
 
 // CoinMarketCap API key
-const cmcApiKey = "4f2da3c7-e6a3-44c7-948a-0ce6779d3d41"; // Replace with your CoinMarketCap API key
+const cmcApiKey = "4f2da3c7-e6a3-44c7-948a-0ce6779d3d41";
 
 // Cache object to store cryptocurrency prices
 let cryptoCache = {
@@ -45,7 +45,7 @@ const fetchCryptoPrices = async () => {
     try {
         const response = await axios.get("https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest", {
             params: {
-                symbol: "BTC,ETH,SOL", // Fetch prices for BTC, ETH, and SOL
+                symbol: "BTC,ETH,SOL",
             },
             headers: {
                 "X-CMC_PRO_API_KEY": cmcApiKey,
@@ -93,7 +93,6 @@ app.get("/proxy/cmc/prices", async (req, res) => {
     }
 });
 
-// Existing OpenAI chat endpoint
 app.post("/proxy/chat", async (req, res) => {
     const MAX_RETRIES = 3;
     const RETRY_DELAY = 2000; // 2 seconds
