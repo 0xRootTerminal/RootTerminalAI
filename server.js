@@ -16,14 +16,14 @@ const limiter = rateLimit({
 app.use(limiter);
 
 // Secure API key using environment variables
-const klusterApiKey = process.env.KLUSTER_API_KEY; // Ensure this is set in your environment
+const klusterApiKey = process.env.KLUSTER_API_KEY; // Ensure this is set in Render
 const client = new OpenAI({
     apiKey: klusterApiKey,
     baseURL: "https://api.kluster.ai/v1",
 });
 
 // CoinMarketCap API key
-const cmcApiKey = process.env.CMC_API_KEY; // Ensure this is set in your environment
+const cmcApiKey = process.env.CMC_API_KEY; // Ensure this is set in Render
 
 // Cache object to store cryptocurrency prices
 let cryptoCache = {
@@ -141,6 +141,11 @@ app.post("/proxy/chat", async (req, res) => {
         console.error("Error:", error);
         res.status(400).json({ error: "Invalid input" });
     }
+});
+
+// Root endpoint for health check
+app.get("/", (req, res) => {
+    res.send("Server is running!");
 });
 
 const PORT = process.env.PORT || 3000; // Use environment variable for port
