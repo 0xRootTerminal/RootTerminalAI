@@ -100,7 +100,11 @@ app.get("/proxy/cmc/prices", async (req, res) => {
 app.post("/proxy/chat", async (req, res) => {
     const MAX_RETRIES = 3;
     const RETRY_DELAY = 2000; // 2 seconds
-    const sessionId = req.headers["session-id"] || "default-session"; // Use session ID to track chat history
+    const sessionId = req.headers["session-id"]; // Use session ID from headers
+
+    if (!sessionId) {
+        return res.status(400).json({ error: "Session ID is required" });
+    }
 
     let retryCount = 0;
     let response;
