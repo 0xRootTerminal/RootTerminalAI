@@ -75,7 +75,7 @@ const fetchCryptoPrices = async () => {
 
 // Fetch crypto prices immediately and then every 5 minutes
 fetchCryptoPrices();
-setInterval(fetchCryptoPrices, 5 * 60 * 1000);
+setInterval(fetchCryptoPrices, 2 * 3 * 1000);
 
 // Proxy endpoint for CoinMarketCap API
 app.get("/proxy/cmc/prices", async (req, res) => {
